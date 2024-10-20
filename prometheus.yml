@@ -22,12 +22,17 @@
   roles:
     -  base
 
-- hosts: all
+- hosts: db_servers:web_servers
   become: true
   roles:
-    - reqs_prometheus
+    - install_prometheus
 
 - hosts: db_servers:web_servers
   become: true
   roles:
-    - install_premetheus
+    - config_prometheus
+
+- hosts: db_servers:web_servers
+  become: true
+  roles:
+    - start_prometheus

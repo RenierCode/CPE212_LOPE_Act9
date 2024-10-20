@@ -1,0 +1,7 @@
+---
+- name: Start Prometheus Service
+  systemd:
+     name: prometheus
+     enabled: yes
+     state: started
+
