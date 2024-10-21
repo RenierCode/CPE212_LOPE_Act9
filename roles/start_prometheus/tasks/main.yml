@@ -1,4 +1,18 @@
 ---
+- name: Start apache2 (Ubuntu)
+  systemd:
+     name: apache2
+     enabled: yes
+     state: started
+  when: ansible_distribution == "Ubuntu"
+
+- name: Start apache2 (CentOS)
+  systemd:
+     name: httpd
+     enabled: yes
+     state: started
+  when: ansible_distribution == "CentOS"
+
 - name: Start Prometheus Service
   systemd:
      name: prometheus
